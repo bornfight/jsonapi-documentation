@@ -4,7 +4,7 @@ This is a Symfony 5 package that is meant to be used in combination with [Pakhan
 It can be used to generate Api documentation at anytime during the development, not only after generating entities. This can be
 particularly useful when you need to make a lot of changes on your domain model during development.
 
-##Installation
+## Installation
 To install this package use composer:
 ```
 composer require bornfight/jsonapi-documentation --dev
@@ -15,7 +15,7 @@ Register you bundle by adding:
     Bornfight\JsonApiDocumentation\BornfightJsonApiDocumentation::class => [ 'all' => true],
 ```
  in `bundles.php`
-##Usage
+## Usage
 To generate JsonApi documentation, use command:
 ```
 php bin/console jsonapi:documentation:generate
@@ -25,7 +25,7 @@ this will create `documentation/api.yaml` file that can be used as API Documenta
 
 You can use this command anytime, it will look for the latest changes in your API and overwrite old ``api.yaml`` file.
 
-##How it works
+## How it works
 
 This command will check your Controller classes and look for methods:
 - list()
@@ -42,7 +42,7 @@ getAttributes()
 ```
 These methods should return an array. The keys of array elements will be used as attributes and relationships in requests.
 
-##Customization
+## Customization
 
 ### Using a different template
 
