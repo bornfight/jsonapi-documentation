@@ -1,0 +1,44 @@
+{
+  "name": "bornfight/jsonapi-documentation",
+  "description": "This bundle allows for automatic generation of JsonApi documentation",
+  "type": "symfony-bundle",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Marko Pađen",
+      "email": "marko.padjen@bornfight.com"
+    }
+  ],
+  "require": {
+    "php": "^7.1",
+    "paknahad/jsonapi-bundle": "4.*",
+    "nikic/php-parser": "*",
+    "symfony/console": "5.1.*",
+    "symfony/yaml": "5.1.*",
+    "fzaninotto/faker": "^1.9",
+    "symfony/maker-bundle": "^1.11"
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^2.14",
+    "phpstan/phpstan": "^0.12.25"
+  },
+  "autoload": {
+    "psr-4": {
+      "Bornfight\\JsonApiDocumentation\\": "src/"
+    }
+  },
+  "config": {
+    "preferred-install": {
+      "*": "dist"
+    },
+    "sort-packages": true
+  },
+  "scripts": {
+    "csfixer:fix": [
+      "php-cs-fixer fix"
+    ],
+    "phpstan": [
+      "phpstan analyse --level=7 src/"
+    ]
+  }
+}

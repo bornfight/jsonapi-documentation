@@ -1,0 +1,23 @@
+<?php
+
+$finder = PhpCsFixer\Finder::create()
+    ->path('src/')
+    ->path('tests/acceptance/')
+    ->path('tests/functional/')
+    ->path('tests/unit/')
+    ->in(__DIR__);
+
+return PhpCsFixer\Config::create()
+    ->setRules(
+        [
+            '@Symfony' => true,
+            'array_syntax' => ['syntax' => 'short'],
+            'concat_space' => ['spacing' => 'one'],
+            'yoda_style' => [
+                'equal' => false,
+                'identical' => false,
+                'less_and_greater' => false,
+            ],
+        ]
+    )
+    ->setFinder($finder);
