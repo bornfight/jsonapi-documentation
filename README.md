@@ -10,6 +10,11 @@ To install this package use composer:
 composer require bornfight/jsonapi-documentation --dev
 ```
 
+Register you bundle by adding:
+```php
+    Bornfight\JsonApiDocumentation\BornfightJsonApiDocumentation::class => [ 'all' => true],
+```
+ in `bundles.php`
 ##Usage
 To generate JsonApi documentation, use command:
 ```
