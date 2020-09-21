@@ -100,7 +100,7 @@ class ApiDocumentationCommand extends Command
                 continue;
             }
 
-            $routePath = Str::asRoutePath($this->inflector->pluralize($className)[0]);
+            $routePath = Str::asRoutePath($this->inflector->pluralize($className));
             $routeWithId = $routePath . '/{id}';
 
             $attributes = $this->jsonApiClassParser->getTransformerAttributes($className);
