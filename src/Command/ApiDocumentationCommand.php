@@ -7,6 +7,8 @@ use Bornfight\JsonApiDocumentation\Documentation\EntityDetails;
 use Bornfight\JsonApiDocumentation\Documentation\EntityDetailsService;
 use Bornfight\JsonApiDocumentation\Documentation\JsonApiClassParser;
 use Bornfight\JsonApiDocumentation\Documentation\RouteFactory;
+use Doctrine\Inflector\Inflector;
+use Doctrine\Inflector\LanguageInflectorFactory;
 use Exception;
 use Symfony\Bundle\MakerBundle\Str;
 use Symfony\Component\Console\Command\Command;
@@ -14,8 +16,6 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\String\Inflector\EnglishInflector;
-use Symfony\Component\String\Inflector\InflectorInterface;
 use Symfony\Component\Yaml\Exception\ParseException;
 use Symfony\Component\Yaml\Yaml;
 
@@ -35,7 +35,7 @@ class ApiDocumentationCommand extends Command
      */
     private $routeFactory;
     /**
-     * @var InflectorInterface
+     * @var Inflector
      */
     private $inflector;
     /**
@@ -51,16 +51,13 @@ class ApiDocumentationCommand extends Command
      */
     private $customHandlers;
 
-    /**
-     * @SuppressWarnings(PHPMD.ExcessiveParameterList)
-     */
-    public function __construct(iterable $customHandlers, string $projectDir, Filesystem $filesystem, RouteFactory $routeFactory, EntityDetailsService $entityDetailsService, JsonApiClassParser $jsonApiClassParser)
+    public function __construct(iterable $customHandlers, string $projectDir, Filesystem $filesystem, RouteFactory $routeFactory, EntityDetailsService $entityDetailsService, JsonApiClassParser $jsonApiClassParser, LanguageInflectorFactory $languageInflectorFactory)
     {
         parent::__construct();
         $this->projectDir = $projectDir;
         $this->filesystem = $filesystem;
         $this->routeFactory = $routeFactory;
-        $this->inflector = new EnglishInflector();
+        $this->inflector = $languageInflectorFactory->build();
         $this->entityDetails = $entityDetailsService->getEntityDetails();
         $this->jsonApiClassParser = $jsonApiClassParser;
         $this->customHandlers = $customHandlers;
